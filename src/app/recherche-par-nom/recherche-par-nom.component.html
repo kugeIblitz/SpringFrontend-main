@@ -1,0 +1,46 @@
+ <div class="container">
+      <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+        <label>Film Name</label>
+        <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" >
+        </div>
+        </form>
+
+    <!-- <div class="container">
+      <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+        <label>Film Name</label>
+        <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" >
+        </div>
+        </form>
+        <tbody *ngFor="let film of films | searchFilter: searchTerm "> -->
+  
+  
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Genres</th>
+            <th>Supprimer</th>
+            <th>Modifier</th>
+          </tr>
+        </thead>
+        <!-- <tbody *ngIf="films && films.length > 0"> -->
+          <tbody *ngFor="let film of films | filter:searchTerm ">
+          <tr>
+            <td>{{film.idFilm}}</td>
+            <td>{{film.nomFilm}}</td>
+            <td>{{film.descFilm}}</td>
+            <td>{{film.categorie?.nomCat}}</td>
+            <td><a class="btn btn-danger" (click)="supprimerFilm(film)">Supprimer</a></td>
+            <td><a class="btn btn-success" [routerLink]="['/updateFilm',film.idFilm]">Modifier</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

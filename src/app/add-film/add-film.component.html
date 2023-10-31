@@ -1,0 +1,86 @@
+<div class="container">
+  <div>
+    <h2>Add Film :</h2>
+  </div>
+  <form>
+    <div class="col-sm-2 col-md-2 col-lg-1">
+      <label hidden>ID Film</label>
+      <input
+        hidden
+        type="text"
+        [(ngModel)]="newFilm.idFilm"
+        name="idFilm"
+        class="form-control"
+      />
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-2">
+      <label>Nom Film</label>
+      <input
+        type="text"
+        [(ngModel)]="newFilm.nomFilm"
+        name="nomFilm"
+        class="form-control"
+      />
+    </div>
+
+    <div class="col-sm-2 col-md-2 col-lg-6">
+      <label for="exampleFormControlTextarea1">Movie Description</label>
+      <textarea
+        class="form-control"
+        rows="3"
+        [(ngModel)]="newFilm.descFilm"
+        name="descFilm"
+      ></textarea>
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Category</label>
+      <select
+        class="form-control form-control-lg"
+        id="idG"
+        name="idG"
+        [(ngModel)]="newIdCat"
+      >
+        <option *ngFor="let g of categories" [value]="g.idCat">
+          {{ g?.nomCat }}
+        </option>
+      </select>
+    </div>
+
+    <div class="col-sm-16 col-md-16 col-lg-16">
+      <label class="mb-2">Image :</label>
+      <input
+        type="file"
+        (change)="onImageUpload($event)"
+        name="logo"
+        class="form-control"
+      />
+    </div>
+
+    <div class="col-sm-16 col-md-16 col-lg-16">
+      <img
+        [src]="imagePath"
+        class="card-img-top img-fluid rounded-start"
+        style="width: 500px; height: 300px"
+      />
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Date création</label>
+      <input
+        type="date"
+        [(ngModel)]="newFilm.dateCreation"
+        name="dateCreation"
+        class="form-control"
+      />
+    </div>
+    <div class="mt-2">
+      <button type="submit" (click)="addFilm()" class="btn btn-success">
+        Add
+      </button>
+      <div>
+        <h3>{{ msg }}</h3>
+      </div>
+    </div>
+  </form>
+</div>
